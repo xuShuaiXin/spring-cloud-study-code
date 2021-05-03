@@ -1,0 +1,10 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      #设置zooKeeper注册中心的 ip地址和端口号
+      connect-string: localhost:2181

@@ -1,0 +1,41 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-feign-hystrix-order
+eureka:
+  client:
+    register-with-eureka: true   #是否注册到eureka服务中
+    fetch-registry: true      #是否拉取其他的服务
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+feign:
+  hystrix:
+    enabled: true
+
+#设置feign客户端超时时间(OpenFeign默认支持ribbon)
+ribbon:
+  #指的是建立连接后从服务器读取到可用资源所用的时间
+  ReadTimeout: 20000
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下,两端连接所用的时间
+  ConnectTimeout: 5000
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          enabled: true
+          # 如果enabled设置为false，则请求超时交给ribbon控制,此时@HystrixProperty(name = "execution.isolation
+          #.thread.timeoutInMilliseconds", value = "5000")不起效
+          # 如果enabled设置为true, 则hystrix也有对超时的控制权，@HystrixProperty(name = "execution.isolation
+          #.thread.timeoutInMilliseconds", value = "5000")起效果
+          # 且如果enabled设置为true，ribbon，hystrix都有对请求超时的控制权，且控制效果一样
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+
+
+
+
