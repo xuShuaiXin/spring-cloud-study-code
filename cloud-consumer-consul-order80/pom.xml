@@ -12,6 +12,7 @@
     <artifactId>cloud-consumer-consul-order80</artifactId>
 
     <dependencies>
+
         <!--springboot web起步依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

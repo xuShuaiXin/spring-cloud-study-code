@@ -11,6 +11,12 @@ spring:
     url: jdbc:mysql://localhost:3306/springcloud?serverTimezone=UTC
     username: root
     password: admin
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      #采样率值介于 0 到 1 之间，1 则表示全部采集
+      probability: 1
 
 #声明mbatis mapper配置文件位置;为实体类定义别名
 mybatis:
