@@ -31,6 +31,7 @@
       <module>cloudalibaba-provider-payment9001</module>
     <module>cloudalibaba-consumer-nacos-order80</module>
     <module>cloudalibaba-config-nacos-client3377</module>
+      <module>cloudalibaba-sentinel-service8401</module>
   </modules>
   <!-- 统一管理jar包版本 -->
   <properties>
@@ -56,6 +57,11 @@
   <!-- 子模块继承之后，提供作用：锁定版本+子modlue不用写groupId和version  -->
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>com.xsx.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <!--springCloudAlibaba-->
       <dependency>
         <groupId>com.alibaba.cloud</groupId>
